@@ -1,56 +1,97 @@
-# Revolutionizing Liver Care: Predicting Liver Cirrhosis Using Advanced Machine Learning Techniques
+# 🧬 Liver Cirrhosis Prediction using Machine Learning
 
-## 🔖 Overview
-
-This project is a web-based liver cirrhosis prediction application powered by machine learning and a neon-themed UI using Flask. It takes clinical features as input and predicts whether a patient is likely suffering from liver cirrhosis.
+This project predicts the likelihood of **liver cirrhosis** in a patient based on clinical and diagnostic inputs using a trained machine learning model. The application is built using **Flask** with a **neon-themed user interface**.
 
 ---
 
-## 📅 Project Structure
+## 📁 Project Structure
 
 ```
-LiverCirrhosisPrediction/
-├── app.py
-├── models/
+Revolutionizing-Liver-Care-Predicting-Liver-Cirrhosis/
+├── data/
+│   └── HealthCareData.xlsx
+├── documentation/
+│   └── README.md
+├── flask/
+│   ├── static/
+│   │   └── style.css
+│   ├── templates/
+│   │   ├── index.html
+│   │   ├── inner-page.html
+│   │   └── portfolio-details.html
+│   ├── app.py
 │   ├── rf_acc_68.pkl
 │   └── normalizer.pkl
-├── static/
-│   └── style.css
-├── templates/
-│   └── index.html
+├── training/
+│   └── liver_model_train.py
 ├── requirements.txt
-└── README.md
 ```
 
 ---
 
-## 🚀 Features
-
-* User-friendly web interface (neon style)
-* Takes 10 clinical input features
-* Displays prediction visually and keeps previous input data
-* Powered by Random Forest classifier
-* Fully responsive and interactive UI
-
----
-
-## 🔧 Installation
+## 🚀 How to Run the Project
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/LiverCirrhosisPrediction.git
-cd LiverCirrhosisPrediction
+git clone https://github.com/your-username/Revolutionizing-Liver-Care-Predicting-Liver-Cirrhosis.git
+cd Revolutionizing-Liver-Care-Predicting-Liver-Cirrhosis
 ```
 
-### 2. Create Virtual Environment
+### 2. Create and Activate Virtual Environment
 
 ```bash
 python -m venv venv
-venv\Scripts\activate  # Windows
+venv\Scripts\activate  # On Windows
+# or
+source venv/bin/activate  # On Linux/macOS
 ```
 
-### 3. Install Requirements
+### 3. Install Required Packages
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the Flask Application
+
+```bash
+cd flask
+python app.py
+```
+
+Visit **`http://127.0.0.1:5000/`** in your browser to access the web app.
+
+---
+
+## 🧠 Model Details
+
+* Model: **Random Forest Classifier**
+* Accuracy: \~68%
+* Preprocessing: Features normalized using a saved `normalizer.pkl` object
+* Encodes categorical values like Gender, Diabetes, Hepatitis B, etc.
+
+---
+
+## 🎨 User Interface (Neon Theme)
+
+* Full-page neon UI
+* Styled using `static/style.css`
+* Inputs retained after prediction
+* Prediction result highlighted with **color-coded alert**
+
+---
+
+## 📦 Requirements
+
+Dependencies are listed in `requirements.txt`. Major packages include:
+
+* `Flask`
+* `numpy`
+* `scikit-learn`
+* `pandas`
+
+Install using:
 
 ```bash
 pip install -r requirements.txt
@@ -58,80 +99,25 @@ pip install -r requirements.txt
 
 ---
 
-## 🔬 Dataset
+## 📸 Screenshots
 
-* File: `dataset/HealthCareData.xlsx`
-* Includes features such as Age, Gender, Alcohol Consumption, Hemoglobin, Platelet Count, Hepatitis B, etc.
+![Uploading line_follower_robot.png…]()
 
----
-
-## 🤖 Model Training
-
-* Model: `RandomForestClassifier`
-* Training script: `training/liver_model_train.py`
-* Output:
-
-  * `models/rf_acc_68.pkl` (trained model)
-  * `models/normalizer.pkl` (StandardScaler)
 
 ---
 
-## 🌐 Usage
+## 📑 Notes
 
-### Run the Flask App:
-
-```bash
-python app.py
-```
-
-Visit: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+* The `rf_acc_68.pkl` file contains the trained Random Forest model.
+* `normalizer.pkl` contains the fitted scaler used during model training.
+* `liver_model_train.py` (in training folder) contains the training pipeline.
+* Inputs are not reset after submitting to ensure user convenience.
+* The HTML and CSS are placed in Flask’s conventional `templates` and `static` folders.
 
 ---
 
-## 📈 Input Features
+## 🙋‍♀️ Author
 
-* Age
-* Gender
-* Duration of Alcohol Consumption
-* Quantity of Alcohol Consumption
-* Hepatitis B Infection
-* Diabetes
-* Obesity
-* Hemoglobin (g/dl)
-* Platelet Count (lakhs/mm)
-* USG Abdomen (Diffuse/Normal)
+* Developed as part of an AI internship project.
+* Feel free to fork or suggest improvements!
 
----
-
-## 🔹 Output
-
-* 🟢 **Patient likely does NOT have liver cirrhosis**
-* 🔴 **Patient is likely suffering from liver cirrhosis**
-
----
-
-## 🏓 Screenshots
-
-> Add UI screenshots here in your GitHub repo.
-
----
-
-## 📥 Deployment
-
-* Local deployment with Flask
-* Can be extended to deploy on platforms like Heroku, Render, or PythonAnywhere
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-## 📚 References
-
-* scikit-learn documentation
-* Flask official documentation
-* Dataset (provide your source or citation)
-* CSS neon UI inspiration from CodePen and CSS-Tricks
