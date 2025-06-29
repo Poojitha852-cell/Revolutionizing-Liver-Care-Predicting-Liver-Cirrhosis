@@ -99,12 +99,7 @@ pip install -r requirements.txt
 
 ---
 
-## 📸 Screenshots
 
-![Uploading line_follower_robot.png…]()
-
-
----
 
 ## 📑 Notes
 
