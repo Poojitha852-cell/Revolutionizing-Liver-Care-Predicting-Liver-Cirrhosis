@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Neon Liver Cirrhosis Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      color: #ffffff;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-card {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 850px;
+      border: 2px solid #00f2ff;
+      box-shadow: 0 0 25px #00f2ff, 0 0 15px #00f2ff inset;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 30px;
+      color: #00f2ff;
+      text-shadow: 0 0 8px #00f2ff;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #c5f3ff;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border-radius: 10px;
+      border: 1px solid #00f2ff;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    select option {
+      background-color: #1a1a2e;
+      color: #ffffff;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background: linear-gradient(to right, #00e676, #00f2ff);
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #00f2ff, 0 0 5px #00e676 inset;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(to right, #00f2ff, #00e676);
+      transform: scale(1.02);
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 15px;
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .success {
+      background: rgba(0, 255, 135, 0.1);
+      color: #00ff90;
+      border: 1px solid #00ff90;
+      box-shadow: 0 0 15px #00ff90;
+    }
+
+    .danger {
+      background: rgba(255, 0, 70, 0.1);
+      color: #ff4f81;
+      border: 1px solid #ff4f81;
+      box-shadow: 0 0 15px #ff4f81;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <h1>🧬 Liver Cirrhosis Prediction</h1>
+    <form action="/predict" method="post">
+      <label>Age</label>
+      <input type="text" name="feature1" required>
+
+      <label>Gender</label>
+      <select name="feature2" required>
+        <option value="">-- Select --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label>Duration of Alcohol Consumption (Years)</label>
+      <input type="text" name="feature3" required>
+
+      <label>Alcohol Quantity (Quarters/Day)</label>
+      <input type="text" name="feature4" required>
+
+      <label>Hepatitis B Infection</label>
+      <select name="feature5" required>
+        <option value="">-- Select --</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Diabetes</label>
+      <select name="feature6" required>
+        <option value="">-- Select --</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Obesity</label>
+      <select name="feature7" required>
+        <option value="">-- Select --</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>Hemoglobin (g/dl)</label>
+      <input type="text" name="feature8" required>
+
+      <label>Platelet Count (lakhs/mm)</label>
+      <input type="text" name="feature9" required>
+
+      <label>USG Abdomen (diffuse/normal)</label>
+      <select name="feature10" required>
+        <option value="">-- Select --</option>
+        <option value="diffuse">Diffuse</option>
+        <option value="normal">Normal</option>
+      </select>
+
+      <input type="submit" value="🔍 Predict">
+    </form>
+
+    {% if prediction_text %}
+      <div class="result {% if 'NOT' in prediction_text %}success{% else %}danger{% endif %}">
+        <strong style="font-size: 22px;">{{ prediction_text }}</strong>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
