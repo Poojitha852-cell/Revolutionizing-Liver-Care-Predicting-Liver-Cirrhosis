@@ -5,8 +5,8 @@ import numpy as np
 app = Flask(__name__)
 
 # Load models
-model = joblib.load('models/rf_acc_68.pkl')
-normalizer = joblib.load('models/normalizer.pkl')
+model = joblib.load('flask\rf_acc_68.pkl')
+normalizer = joblib.load('flask\normalizer.pkl')
 
 @app.route('/')
 def home():
